@@ -1,0 +1,120 @@
+body {
+    margin:  0px 0px 0px 0px;
+    padding:  0px 0px 0px 0px;
+    background:  #cccccc;
+    font-family: Helvetica, Arial, sans-serif
+}
+
+input[type="text"], input[type="password"] {
+    margin:  0px 0px 0px 0px;
+    padding:  0px 0px 0px 0px;
+    height: 25px;
+    border:  1px solid #cccccc;
+    background:  #fff;
+    min-width: 250px;
+}
+
+input[type="submit"] {
+    margin:  0px 0px 0px 0px;
+    padding:  5px 5px 5px 5px;
+    border-radius: 5px;
+    border:  none;
+}
+
+input[type="submit"].green {
+    background: #7fd67f;
+    color: #fff;
+}
+
+input[type="submit"].green:hover {
+    background: #509450;
+    color: #fff;
+    cursor: pointer;
+}
+
+.div-row {
+    margin:  0px 0px 10px 0px;
+    padding:  0px 0px 0px 0px;
+    overflow: hidden;
+}
+
+    .div-row .field-label {
+        margin:  0px 0px 0px 0px;
+        padding:  0px 0px 0px 0px;
+        width: 120px;
+        position: relative;
+        float: left;
+    }
+
+    .div-row .field-value {
+        margin:  0px 0px 0px 0px;
+        padding:  0px 0px 0px 0px;
+        position: relative;
+        float: left;
+    }
+
+.login {
+    margin:  30px auto 0px auto;
+    padding:  10px 10px 10px 10px;
+    background:  #fff;
+    width: 380px;
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+.chat {
+    margin:  0px 0px 0px 0px;
+    padding:  0px 0px 0px 0px;
+    display: none;
+    background: #fff;
+    min-width: 960px;
+
+}
+
+    .chat .chat-tabs {
+        margin:  0px 0px 0px 0px;
+        padding:  0px 0px 0px 0px;
+        height: 30px;
+        background:  blue;
+    }
+
+    .chat .chat-container {
+        margin:  0px 0px 0px 0px;
+        padding:  0px 0px 0px 0px;
+    }
+
+    .chat .chat-container .contacts {
+        margin:  0px 0px 0px 0px;
+        padding:  0px 0px 0px 0px;
+        width: 250px;
+        height: 500px;
+        float: right;
+        background: red;
+    }
+
+    .chat .chat-container .chat-content {
+        margin:  0px 0px 0px 0px;
+        padding:  0px 0px 0px 0px;
+        overflow: hidden;
+        height: 500px;
+    }
+
+.chat-box {
+    margin:  0px 0px 0px 0px;
+    padding:  0px 0px 0px 0px;
+}
+
+    .chat-box .chat-text {
+        margin:  0px 0px 0px 0px;
+        padding:  0px 0px 0px 0px;
+        background: green;
+    }
+
+    .chat-box .chat-input {
+        margin:  0px 0px 0px 0px;
+        padding:  0px 0px 0px 0px;
+        bottom: 0;
+        background:  yellow;
+    }
+
