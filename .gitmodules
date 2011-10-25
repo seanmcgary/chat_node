@@ -1,3 +1,6 @@
 [submodule "libs/node-oscar"]
 	path = libs/node-oscar
 	url = https://github.com/mscdex/node-oscar.git
+[submodule "www/js/mustache"]
+	path = www/js/mustache
+	url = https://github.com/janl/mustache.js.git

@@ -10,8 +10,8 @@ var oscar = require('./libs/node-oscar');
 
 var aim = new oscar.OscarConnection({
     connection: {
-        username: 'mcg1sean',
-        password: 'humpty1dumpty'
+        username: 'mcgiggles1234',
+        password: 'sean1m'
     }
 });
 
