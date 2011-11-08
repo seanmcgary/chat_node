@@ -1,4 +1,4 @@
-var chat_box_template = '<div class="chat-box">' +
+var chat_box_template = '<div class="chat-box" chat_id="{{chat_id}}">' +
                             '<div class="chat-text">' +
                             '</div>' +
                             '<div class="chat-input">' +
@@ -11,12 +11,24 @@ var chat_box_template = '<div class="chat-box">' +
                             '</div>' +
                         '</div>';
 
-function ChatBox(chat_session, contact){
+var tab_template = '<li chat_id="{{chat_id}}">' +
+                        '<div class="text">' +
+                            '{{username}}' +
+                        '</div>' +
+                        '<div class="close">' +
+                            'x' +
+                        '</div>' +
+                    '</li>';
+
+function ChatBox(chat_session, contact, chat_id){
     var self = this;
     self.contact = contact;
 
     self.chat_session = chat_session;
     self.chat = null;
+    self.chat_id = chat_id;
+
+    self.is_current = false;
     
     self.render_box();
 }
@@ -28,9 +40,13 @@ ChatBox.prototype = {
     render_box: function(){
         var self = this;
 
-        self.chat = $(Mustache.to_html(chat_box_template));
+        self.chat = $(Mustache.to_html(chat_box_template, {chat_id: self.chat_id}));
 
         self.chat_session.current_chats.append(self.chat);
+
+        self.draw_tab();
+
+        self.chat_session.focus_chat_box(self.chat_id);
 
         self.resize_chat();
     },
@@ -38,15 +54,44 @@ ChatBox.prototype = {
         var self = this;
 
         if(self.chat != null){
-            var chat_text = self.chat.find('.chat-text');
-            var chat_input = self.chat.find('.chat-input');
+            self.chat_text = self.chat.find('.chat-text');
+            self.chat_input = self.chat.find('.chat-input');
 
-            console.log(self.chat.get(0).offsetHeight);
+            self.chat_text.css('height', (self.chat.get(0).offsetHeight - self.chat_input.get(0).offsetHeight - 40) + 'px');
 
-            chat_text.css('height', (self.chat.get(0).offsetHeight - chat_input.get(0).offsetHeight - 40) + 'px');
-
-            console.log(self.chat);
         }
+    },
+    /**
+     * chat_data
+     *  - name
+     *  - time
+     *  - text
+     * @param chat_data
+     */
+    write_chat_line: function(chat_data){
+        var self = this;
+        var template = '<div class="chat-line">' +
+                             '<div class="chat-meta">{{name}} ({{time}})</div> {{{text}}}' +
+                         '</div>';
+
+        if(self.chat != null){
+            var msg = Mustache.to_html(template, chat_data);
+            self.chat_text.append(msg);
+        }
+    },
+    draw_tab: function(){
+        var self = this;
+
+        var tab = $(Mustache.to_html(tab_template, {chat_id: self.chat_id, username: self.contact.username}));
+
+        tab.click(function(event){
+            var chat_id = $(this).attr('chat_id');
+            console.log(chat_id);
+
+            self.chat_session.focus_chat_box(chat_id);
+        });
+
+        self.chat_session.chat_tabs_list.append(tab);
     },
     bind_listeners: function(){
         var self = this;

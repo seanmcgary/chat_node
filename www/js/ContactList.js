@@ -33,7 +33,7 @@ ContactList.prototype = {
             for(var i in data.contact_list){
                 var list = data.contact_list[i];
                 if(list.name.toLowerCase() == 'buddies'){
-
+                    console.log(list.contacts);
                     for(var j in list.contacts){
                         var contact = new Contact('aim', list.contacts[j], data.contact_statuses, self);
 
@@ -49,5 +49,19 @@ ContactList.prototype = {
 
         self.socket.emit('get_aim_contacts', {});
 
+    },
+    get_contact: function(protocol, username){
+        var self = this;
+        var ret_contact = null;
+
+        if(protocol == 'aim'){
+            for(var i in self.aim_contacts){
+                if(self.aim_contacts[i].username == username){
+                    ret_contact = self.aim_contacts[i];
+                }
+            }
+        }
+
+        return ret_contact;
     }
 };

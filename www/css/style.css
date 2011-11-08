@@ -60,6 +60,7 @@ input[type="submit"].green:hover {
     width: 380px;
     border-radius: 10px;
     overflow: hidden;
+    /*display: none;*/
 }
 
 .status-bubble {
@@ -96,12 +97,68 @@ input[type="submit"].green:hover {
 
     .chat .chat-tabs {
         margin:  0px 0px 0px 0px;
-        padding:  0px 0px 0px 0px;
-        height: 30px;
+        padding:  10px 0px 0px 10px;
+        overflow:  hidden;
         background: #003366;
         color: #fff;
         border-bottom: 1px solid #0c4781;
     }
+
+        .chat .chat-tabs ul {
+            margin:  0px 0px 0px 0px;
+            padding:  0px 0px 0px 0px;
+            list-style: none;
+        }
+
+            .chat .chat-tabs ul li {
+                margin:  0px 0px 0px 0px;
+                padding:  0px 5px 2px 5px;
+                position: relative;
+                float: left;
+                background:  #cccccc;
+                color: #434343;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                font-size: .8em;
+                border-top:  1px solid #fff;
+                border-left:  1px solid #fff;
+                border-right:  1px solid #fff;
+            }
+
+                .chat .chat-tabs ul li .text {
+                    margin: 0px 0px 0px 0px;
+                    padding:  5px 0px 0px 0px;
+                    position: relative;
+                    float: left;
+                }
+
+                .chat .chat-tabs ul li .close {
+                    margin:  3px 0px 0px 5px;
+                    padding:  0px 0px 0px 0px;
+                    background: #6d8eaf;
+                    border: 1px solid #fff;
+                    position: relative;
+                    float: left;
+                    text-align: center;
+                    width: 15px;
+                    height: 15px;
+                    line-height: 1em;
+                    color: #fff;
+                }
+
+                .chat .chat-tabs ul li .close:hover {
+                    cursor: pointer;
+                    background: #a2bfdb;
+                }
+
+            .chat .chat-tabs ul li:not(:last-of-type) {
+                margin-right: 10px;
+            }
+
+            .chat .chat-tabs ul li:hover {
+                cursor: pointer;
+                background: #eeeeee;
+            }
 
     .chat .chat-container {
         margin:  0px 0px 0px 0px;
@@ -156,6 +213,7 @@ input[type="submit"].green:hover {
                 margin:  0px 0px 0px 0px;
                 padding:  0px 0px 0px 0px;
                 height: 100%;
+                display: none;
             }
 
                 .chat .chat-container .current-content .chat-box .chat-text {

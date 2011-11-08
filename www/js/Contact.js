@@ -62,7 +62,9 @@ Contact.prototype = {
             self.away_set_on = data.awaySetOn;
         }
 
+        //console.log(self.raw_data.name + ":" + self.status);
         if(self.status != 'OFFLINE'){
+
             self.render_contact();
         }
 
@@ -90,6 +92,8 @@ Contact.prototype = {
                                     (self.alias != null ? self.alias : self.username) + ' ' +
                                     '<small class="status">' + (self.status_message != null ? self.status_message : '') + '</small>' +
                             '</li>');
+
+        console.log(self.contact_elem);
         
         self.contact_list.contacts_list_elem.append(self.contact_elem);
 
@@ -104,11 +108,12 @@ Contact.prototype = {
             self.contact_elem.click(function(){
                 var username = $(this).attr('username');
                 var protocol = $(this).attr('protocol');
+                var chat_id = username + ":" + protocol;
+                if(!(chat_id in self.contact_list.chat_session.current_chats_list)){
+                    var chatbox = new ChatBox(self.contact_list.chat_session, self, chat_id);
 
-                if(!((username + ":" + protocol) in self.contact_list.chat_session.current_chats)){
-                    var chatbox = new ChatBox(self.contact_list.chat_session);
-
-                    self.contact_list.chat_session.current_chats[username + ":" + protocol] = chatbox;
+                    self.contact_list.chat_session.current_chats_list[username + ":" + protocol] = chatbox;
+                    console.log(self.contact_list.chat_session.current_chats_list[username + ":" + protocol]);
                 }
 
             });
