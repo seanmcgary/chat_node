@@ -16,8 +16,12 @@ io.sockets.on('connection', function(socket){
     conn.socket = socket;
     
     conn.send_msg = function(data){
-        console.log(data);
-        console.log(conn.chat_instances);
+        
+        if(data.chat_id in connections){
+            connections[data.chat_id].send_msg(data);
+        } else {
+            console.log('not in conections');
+        }
     }
 
     conn.login = function(data){
@@ -40,6 +44,7 @@ io.sockets.on('connection', function(socket){
             console.log("Creating new connection");
 
             var chat = new Chat_Instance(socket, data.protocol);
+            
 
             chat.auth(data.username, data.password, function(err, data){
 

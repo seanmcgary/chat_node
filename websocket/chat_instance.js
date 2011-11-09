@@ -35,8 +35,8 @@ Chat_Instance.prototype = {
 
         switch(self.protocol){
             case 'aim':
-                self.connection = new Aim_Connection();
-                self.connection.init(self);
+                self.connection = new Aim_Connection(self);
+                //self.connection.init(self);
                 break;
         }
     },
@@ -48,9 +48,9 @@ Chat_Instance.prototype = {
         self.set_socket(socket);
 
         // reset some stuff in the AIM connection
-        self.connection.init(self);
+        //self.connection.init(self);
 
-        self.reinit(function(err, data){
+        self.connection.reinit(function(err, data){
             if(err){
                 callback(true, data);
             } else {
@@ -83,6 +83,16 @@ Chat_Instance.prototype = {
         var self = this;
 
         callback(self.connected);
+    },
+    handle_received_msg: function(data){
+        var self = this;
+
+        self.socket.emit('msg_received', data);
+    },
+    send_msg: function(data){
+        var self = this;
+
+        self.connection.send_msg(data);
     }
 };
 
