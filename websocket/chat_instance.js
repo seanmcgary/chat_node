@@ -50,7 +50,7 @@ Chat_Instance.prototype = {
         // reset some stuff in the AIM connection
         self.connection.init(self);
 
-        self.reinit(function(err, data){
+        self.connection.reinit(function(err, data){
             if(err){
                 callback(true, data);
             } else {

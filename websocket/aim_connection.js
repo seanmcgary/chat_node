@@ -29,7 +29,7 @@ Aim_Connection.prototype = {
         var self = this;
 
         self.post_connection_setup(function(){
-            callback(false, {contacts: self.contact_list, username: username});
+            callback(false, {contacts: self.contact_list, username: self.username});
         });
     },
     auth: function(username, password, callback){

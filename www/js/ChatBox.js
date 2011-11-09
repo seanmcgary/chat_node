@@ -6,7 +6,7 @@ var chat_box_template = '<div class="chat-box" chat_id="{{chat_id}}">' +
                                     '<input type="submit">' +
                                 '</div>' +
                                 '<div class="text-box">' +
-                                    '<textarea username="{{username}}" chat_id="{{chat_id}}" name="chat-message" class="chat-message"></textarea>' +
+                                    '<input type="text" name="chat-message" class="chat-message">' +
                                 '</div>' +
                             '</div>' +
                         '</div>';
@@ -59,7 +59,18 @@ ChatBox.prototype = {
             self.chat_text = self.chat.find('.chat-text');
             self.chat_input = self.chat.find('.chat-input');
 
-            self.chat_text.css('height', (self.chat.get(0).offsetHeight - self.chat_input.get(0).offsetHeight - 40) + 'px');
+            var content_height = window.innerHeight - self.chat_session._chat_toolbar.get(0).offsetHeight;
+            //console.log(window.innerHeight);
+            //console.log(self.chat_session._chat_toolbar.get(0).offsetHeight);
+            //console.log(content_height);
+
+            var input_height = self.chat_input.get(0).offsetHeight + 30;
+
+            content_height -= input_height;
+
+            self.chat_text.css('height', content_height + 'px');
+
+            //self.chat_text.css('height', (self.chat.get(0).offsetHeight - self.chat_input.get(0).offsetHeight - 40) + 'px');
 
         }
     },
@@ -93,7 +104,7 @@ ChatBox.prototype = {
             self.chat_session.focus_chat_box(chat_id);
         });
 
-        self.chat_session.chat_tabs_list.append(tab);
+        //self.chat_session.chat_tabs_list.append(tab);
     },
     bind_listeners: function(){
         var self = this;

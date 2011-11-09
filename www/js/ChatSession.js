@@ -25,18 +25,22 @@ ChatSession.prototype = {
 
         $('#login').css('display', 'none');
 
-        self.chat_tabs = $('<div class="chat-tabs" id="chat-tabs"></div>');
-        self.chat_tabs_list = $('<ul id="tabs-list"></ul>');
+        //self.chat_tabs = $('<div class="chat-tabs" id="chat-tabs"></div>');
+        //self.chat_tabs_list = $('<ul id="tabs-list"></ul>');
         
         self.chat_container = $('<div class="chat-container"></div>');
 
-        self.container_elem.append(self.chat_tabs);
-        self.chat_tabs.append(self.chat_tabs_list);
+        //self.container_elem.append(self.chat_tabs);
+        //self.chat_tabs.append(self.chat_tabs_list);
         self.container_elem.append(self.chat_container);
 
         self.contact_list = new ContactList(self);
 
         self.current_chats = $('<div class="current-content"></div>');
+
+        self._chat_toolbar = $('<div class="toolbar"></div>');
+
+        self.current_chats.append(self._chat_toolbar);
 
         self.current_chats_list = {};
 
@@ -46,12 +50,20 @@ ChatSession.prototype = {
 
         self.contact_list.render_contacts(chat_data.contacts);
 
+        self.resize();
+
     },
     authenticate_user: function(login){
         var self = this;
 
         self.socket.emit('chat_login', login);
         
+
+    },
+    resize: function(){
+        var self = this;
+
+        self.current_chats.css('height', window.innerHeight + 'px');
 
     },
     setup_listeners: function(){
