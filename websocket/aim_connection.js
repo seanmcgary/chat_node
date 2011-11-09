@@ -162,20 +162,13 @@ Aim_Connection.prototype = {
         var listeners = ['im', 'contactonline', 'contactoffline', 'contactupdate'];
 
         for(var i in listeners){
-            console.log("Listener: " + listeners[i]);
-
             var bound_listeners = self.aim_connection.listeners([listeners[i]]);
-
-            console.log(bound_listeners);
 
             if(bound_listeners.length > 0){
                 self.aim_connection.removeAllListeners(listeners[i]);
             }
 
             bound_listeners = self.aim_connection.listeners([listeners[i]]);
-
-            console.log(bound_listeners);
-            console.log('----');
         }
 
         console.log('setting up listeners');
