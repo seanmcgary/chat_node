@@ -25,14 +25,14 @@ Aim_Connection.prototype = {
 
         self.chat_instance = chat_instance;
         console.log(self.chat_instance);
-    },
+    },*/
     reinit: function(callback){
         var self = this;
 
         self.post_connection_setup(function(){
             callback(false, {contacts: self.contact_list, username: self.username});
         });
-    },*/
+    },
     auth: function(username, password, callback){
         var self = this;
 

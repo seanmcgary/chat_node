@@ -55,7 +55,8 @@ Contact.prototype = {
                                         '<small class="status">' + (self.status_msg != null ? self.status_msg : '') + '</small>' +
                                 '</li>');
 
-            self.contact_list.contacts_list_elem.append(self.contact_elem);
+            //self.contact_list.contacts_list_elem.append(self.contact_elem);
+            self.contact_list._contact_list.append(self.contact_elem);
 
             self.bind_contact_click();
         }

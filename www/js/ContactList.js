@@ -5,6 +5,14 @@
  * Time: 9:47 PM
  * To change this template use File | Settings | File Templates.
  */
+
+var contact_list_template = '<div class="list-container">' +
+                                '<div class="list-header">AIM</div>' +
+                                    '<ul class="contacts-list">' +
+                                    '</ul>' +
+                                '</div>' +
+                             '</div>'
+
 function ContactList(chat_session){
     var self = this;
 
@@ -20,11 +28,16 @@ ContactList.prototype = {
     init: function(){
         var self = this;
 
-        self.contacts_container = $('<div class="contacts"></div>');
-        self.contacts_list_elem = $('<ul class="contacts-list"></ul>');
+        self._list_container = $('<div class="list-container"></div>');
 
-        self.chat_session.chat_container.append(self.contacts_container);
-        self.contacts_container.append(self.contacts_list_elem);
+        self._list_header = $('<div class="list-header">AIM</div>');
+        self._contact_list = $('<ul class="contacts-list"></ul>');
+
+        self._list_container.append(self._list_header);
+        self._list_container.append(self._contact_list);
+
+
+        self.chat_session._contacts_container.append(self._list_container);
 
 
     },

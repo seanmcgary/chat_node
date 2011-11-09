@@ -40,6 +40,8 @@ ChatSession.prototype = {
 
         self._chat_toolbar = $('<div class="toolbar"></div>');
 
+        self._contacts_container = $('<div class="contacts"></div>');
+
         self.current_chats.append(self._chat_toolbar);
 
         self.current_chats_list = {};
@@ -48,10 +50,11 @@ ChatSession.prototype = {
 
         self.container_elem.css('display', 'block');
 
-        self.contact_list.render_contacts(chat_data.contacts);
+        self.chat_container.append(self._contacts_container);
 
         self.resize();
 
+        //self.contact_list.render_contacts(chat_data.contacts);
     },
     authenticate_user: function(login){
         var self = this;
