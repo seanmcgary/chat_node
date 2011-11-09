@@ -8,6 +8,10 @@ $(document).ready(function(){
 
         creds.username = $('#username').val();
         creds.password = $('#password').val();
+
+        // TODO - protocol is AIM for now, but will be generic later
+
+        creds.protocol = 'aim';
         chat_session.authenticate_user(creds);
         return false;
     });

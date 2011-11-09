@@ -6,7 +6,7 @@ var chat_box_template = '<div class="chat-box" chat_id="{{chat_id}}">' +
                                     '<input type="submit">' +
                                 '</div>' +
                                 '<div class="text-box">' +
-                                    '<textarea name="chat-message" class="chat-message"></textarea>' +
+                                    '<textarea username="{{username}}" chat_id="{{chat_id}}" name="chat-message" class="chat-message"></textarea>' +
                                 '</div>' +
                             '</div>' +
                         '</div>';
@@ -40,7 +40,7 @@ ChatBox.prototype = {
     render_box: function(){
         var self = this;
 
-        self.chat = $(Mustache.to_html(chat_box_template, {chat_id: self.chat_id}));
+        self.chat = $(Mustache.to_html(chat_box_template, {chat_id: self.chat_id, username: self.contact.username}));
 
         self.chat_session.current_chats.append(self.chat);
 
@@ -49,6 +49,8 @@ ChatBox.prototype = {
         self.chat_session.focus_chat_box(self.chat_id);
 
         self.resize_chat();
+
+        self.bind_listeners();
     },
     resize_chat: function(){
         var self = this;
@@ -96,9 +98,22 @@ ChatBox.prototype = {
     bind_listeners: function(){
         var self = this;
 
-        if(self.chat != null){
-            
-        }
+        $('textarea[chat_id="' + self.chat_id + '"]').keypress(function(event){
+
+            if(event.which == 13 && event.shiftKey == false){
+                event.preventDefault();
+
+                var chat_id = $(this).attr('chat_id');
+                var msg = $(this).val();
+                var to_user = $(this).attr('username');
+                console.log('here');
+
+                self.chat_session.send_msg({chat_id: chat_id, msg: msg, to_user: to_user});
+
+            }
+
+        });
+
     }
 
 };

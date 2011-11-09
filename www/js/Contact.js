@@ -6,98 +6,59 @@
  * To change this template use File | Settings | File Templates.
  */
 
-function Contact(protocol, data, status_codes, contact_list){
+function Contact(contact_data, contact_list){
     var self = this;
 
-    self.prototcol = protocol;
+    self.prototcol = contact_data.protocol;
     self.contact_list = contact_list;
 
-    self.username = null;
-    self.status = null;
-    self.status_message = null;
-    self.alias = null;
-    self.idle = false;
-    self.idle_time = null;
-    self.online_since = null;
-    self.away_set_on = null;
+    self.username = contact_data.username;
+    self.status = contact_data.status;
+    self.status_msg = contact_data.status_msg;
+    self.alias = contact_data.alias;
+    self.idle = (contact_data.idle_time != null) ? contact_data.idle_time : false;
+    self.idle_time = contact_data.idle_time;
+    self.online_since = contact_data.online_since;
 
+    self.chat_id = self.username + ":" + self.protocol;
+    
     self.contact_elem = null;
 
-    if(self.prototcol == 'aim'){
-        self.aim_status_codes = status_codes;
-        self.parse_aim_contact_data(data);
-    }
+    self.render_contact();
 
 }
 
 Contact.prototype = {
-    parse_aim_contact_data: function(data){
-        var self = this;
-        self.raw_data = data;
-        self.username = data.name;
-
-        if('alias' in data.localInfo){
-            self.alias = data.localInfo.alias;
-        }
-
-        for(var i in self.aim_status_codes){
-            if(data.status == self.aim_status_codes[i]){
-                self.status = i;
-                self.status_display = i.toLowerCase();
-            }
-        }
-
-        self.online_since = data.onlineSince;
-
-        if('statusMsg' in data){
-            self.status_message = data.statusMsg;
-        }
-
-        if('idleMins' in data){
-            self.idle = true;
-            self.idle_time = data.idleMins;
-        }
-
-        if(self.status == 'AWAY'){
-            self.away_set_on = data.awaySetOn;
-        }
-
-        //console.log(self.raw_data.name + ":" + self.status);
-        if(self.status != 'OFFLINE'){
-
-            self.render_contact();
-        }
-
-    },
     render_contact: function(){
         var self = this;
 
         var bubble_color = 'gray-bubble';
 
-        if(self.status == 'ONLINE'){
+        if(self.status == 'online'){
             bubble_color = 'green-bubble';
         }
 
-        if(self.status == 'AWAY'){
+        if(self.status == 'away'){
             bubble_color = 'red-bubble';
         }
 
-        if(self.idle == true){
+        if(self.idle != false){
             bubble_color = 'yellow-bubble';
         }
+        console.log(self.username + ":" + self.status);
+        if(self.status != 'offline'){
         
-        self.contact_elem = $('' +
-                            '<li username="' + self.username + '" protocol="' + self.prototcol + '">' +
-                                '<div class="status-bubble ' + bubble_color + '"></div>' +
-                                    (self.alias != null ? self.alias : self.username) + ' ' +
-                                    '<small class="status">' + (self.status_message != null ? self.status_message : '') + '</small>' +
-                            '</li>');
+            self.contact_elem = $('' +
+                                '<li username="' + self.username + '" protocol="' + self.prototcol + '">' +
+                                    '<div class="status-bubble ' + bubble_color + '"></div>' +
+                                        (self.alias != null ? self.alias : self.username) + ' ' +
+                                        '<small class="status">' + (self.status_msg != null ? self.status_msg : '') + '</small>' +
+                                '</li>');
 
-        console.log(self.contact_elem);
-        
-        self.contact_list.contacts_list_elem.append(self.contact_elem);
+            self.contact_list.contacts_list_elem.append(self.contact_elem);
 
-        self.bind_contact_click();
+            self.bind_contact_click();
+        }
     },
     bind_contact_click: function(){
         var self = this;

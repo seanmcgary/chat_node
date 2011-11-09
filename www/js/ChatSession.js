@@ -14,10 +14,12 @@ function ChatSession(chat_container_elem, socket){
     self.socket = socket;
 
     self.current_chats = {};
+
+    self.setup_listeners();
 }
 
 ChatSession.prototype = {
-    init: function(){
+    init: function(chat_data){
         var self = this;
         console.log("ChatSession init");
 
@@ -42,29 +44,38 @@ ChatSession.prototype = {
 
         self.container_elem.css('display', 'block');
 
-        self.contact_list.get_contacts();
-    },
-    authenticate_user: function(creds){
-        var self = this;
-        
-        self.socket.emit('aim_chat_login', creds);
+        self.contact_list.render_contacts(chat_data.contacts);
 
-        self.socket.on('aim_login', function(data){
-            if(data.auth == true){
-                self.init();
-            } else {
-                console.log(data);
-            }
+    },
+    authenticate_user: function(login){
+        var self = this;
+
+        self.socket.emit('chat_login', login);
+        
+
+    },
+    setup_listeners: function(){
+        var self = this;
+
+        self.socket.on('login_ack', function(data){
+            console.log(data);
+
+            self.init(data);
         });
 
-        self.socket.on('aim_msg_received', function(data){
+        self.socket.on('login_nack', function(data){
+            console.log(data);
+            console.log("Login failed");
+        });
+
+        self.socket.on('msg_received', function(data){
             console.log(data);
             console.log(self.current_chats_list);
 
-            var chat_id = (data.sender.name + ':aim');
+            var chat_id = (data.username + ":" + data.protocol);
 
             if(!(chat_id in self.current_chats_list)){
-                var chatbox = new ChatBox(self, self.contact_list.get_contact('aim', data.sender.name), chat_id);
+                var chatbox = new ChatBox(self, self.contact_list.get_contact(data.protocol, data.username), chat_id);
 
                 self.current_chats_list[chat_id] = chatbox;
 
@@ -73,19 +84,21 @@ ChatSession.prototype = {
             var chat = self.current_chats_list[chat_id];
             var time = new Date();
             chat.write_chat_line({
-                name: data.sender.name,
+                name: data.username,
                 time: time.getHours() + ":" + time.getMinutes(),
                 text: data.text
             });
         });
-    },
-    setup_listeners: function(){
-
     },
     focus_chat_box: function(chat_id){
         $('.chat-box').css('display', 'none');
 
         $('.chat-box[chat_id="' + chat_id + '"]').css('display', 'block');
 
+    },
+    send_msg: function(msg_data){
+        var self = this;
+        console.log('sending message');
+        self.socket.emit('send_msg', msg_data);
     }
 };

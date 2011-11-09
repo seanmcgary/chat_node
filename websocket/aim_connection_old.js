@@ -1,37 +1,28 @@
 /**
  * Created by JetBrains PhpStorm.
  * User: seanmcgary
- * Date: 11/8/11
- * Time: 8:48 PM
+ * Date: 10/20/11
+ * Time: 3:02 PM
  * To change this template use File | Settings | File Templates.
  */
-function Aim_Connection(){
+
+
+function Aim_Connection(chat_instance){
     var self = this;
 
-    // set up some instance variables;
     self.oscar = require('../libs/node-oscar/oscar.js');
 
     self.aim_connection = null;
     self.connected = false;
     self.username = null;
     self.contact_list = [];
-    self.chat_instance = null;
+    self.chat_instance = chat_instance;
     self.protocol = 'aim';
-};
+}
 
 Aim_Connection.prototype = {
-    init: function(chat_instance){
-        var self = this;
-
-        self.chat_instance = chat_instance;
-    },
-    reinit: function(callback){
-        var self = this;
-
-        self.post_connection_setup(function(){
-            callback(false, {contacts: self.contact_list, username: username});
-        });
-    },
+    // new functions
+    //-----------------------------------------------------------------------------------------------------------------
     auth: function(username, password, callback){
         var self = this;
 
@@ -45,33 +36,44 @@ Aim_Connection.prototype = {
         self.aim_connection.connect(function(err){
             if(err){
                 self.connected = false;
+                console.log("Failed to connect with username " + username);
+                console.log(err);
 
                 callback(true, err);
+
             } else {
+                // set as connected
                 self.connected = true;
                 self.username = username;
+                
+                console.log('Authentication successful for ' + username);
 
-                self.post_connection_setup(function(){
+                self.post_connection_setup(null, function(){
                     callback(false, {contacts: self.contact_list, username: username});
                 });
+
+
             }
         });
     },
-    post_connection_setup: function(callback){
+    post_connection_setup: function(chat_instance, callback){
         var self = this;
 
-        // set up the aim listeners. since we want things semi-synchronous, lets toss in some callbacks
-        self.setup_aim_listeners(function(){
-            self.generify_contacts(self.aim_connection.contacts.list, function(){
-                // call back to the calling routine
-                callback();
-            });
+        if(chat_instance != null){
+            self.chat_instance = chat_instance;
+        }
+        
+        // now that we are connected, set up the listeners
+        self.setup_aim_listeners();
+
+        self.generify_contacts(self.aim_connection.contacts.list, function(){
+            callback();
         });
     },
     generify_contacts: function(contacts_list, callback){
         var self = this;
         self.contact_list = [];
-
+        
         for(var i in contacts_list){
             if(contacts_list[i].name.toLowerCase() == 'buddies'){
                 var buddies = contacts_list[i];
@@ -116,7 +118,7 @@ Aim_Connection.prototype = {
 
                     self.contact_list.push(new_contact);
                 }
-
+                
             }
         }
 
@@ -150,7 +152,7 @@ Aim_Connection.prototype = {
         var self = this;
         console.log(user);
     },
-    setup_aim_listeners: function(callback){
+    setup_aim_listeners: function(){
         var self = this;
 
         self.aim_connection.removeListener('im', self.msg_received);
@@ -162,8 +164,6 @@ Aim_Connection.prototype = {
         self.aim_connection.on('contactonline', self.contact_online);
         self.aim_connection.on('contactoffline', self.contact_offline);
         self.aim_connection.on('contactupdate', self.contact_update);
-
-        callback();
     }
 };
 
