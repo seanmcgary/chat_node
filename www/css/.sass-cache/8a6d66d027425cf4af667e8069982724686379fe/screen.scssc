@@ -1,783 +1,0 @@
-3.1.4 (Brainy Betty)
-1e671ba82cd9b9512a9b143707e1a152601bdd19
-o:Sass::Tree::RootNode
-:@template"ı/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-
-@import "compass/reset";
-
-body {
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-    font-family: Helvetica, Arial, sans-serif;
-    background: #eeeeee;
-    
-}
-
-input[type="text"], input[type="password"] {
-    margin:  0px 0px 0px 0px;
-    padding:  0px 0px 0px 0px;
-    height: 25px;
-    border:  1px solid #cccccc;
-    background:  #fff;
-    min-width: 250px;
-}
-
-input[type="submit"] {
-    margin:  0px 0px 0px 0px;
-    padding:  5px 5px 5px 5px;
-    border-radius: 5px;
-    border:  none;
-}
-
-input[type="submit"].green {
-    background: #7fd67f;
-    color: #fff;
-}
-
-input[type="submit"].green:hover {
-    background: #509450;
-    color: #fff;
-    cursor: pointer;
-}
-
-.div-row {
-    margin:  0px 0px 10px 0px;
-    padding:  0px 0px 0px 0px;
-    overflow: hidden;
-
-
-    .field-label {
-        margin:  0px 0px 0px 0px;
-        padding:  0px 0px 0px 0px;
-        width: 120px;
-        position: relative;
-        float: left;
-    }
-
-    .field-value {
-        margin:  0px 0px 0px 0px;
-        padding:  0px 0px 0px 0px;
-        position: relative;
-        float: left;
-    }
-}
-
-.login {
-    margin:  30px auto 0px auto;
-    padding:  10px 10px 10px 10px;
-    background:  #fff;
-    width: 380px;
-    border-radius: 10px;
-    overflow: hidden;
-    /*display: none;*/
-}
-
-.status-bubble {
-    margin: 2px 5px 0px 0px;
-    height: 10px;
-    border-radius: 5px;
-    width: 10px;
-    position: relative;
-    float: left;
-}
-
-.green-bubble {
-    background: #008000;
-}
-
-.red-bubble {
-    background: #ff0000;
-}
-
-.yellow-bubble {
-    background: #ffff00;
-}
-
-.gray-bubble {
-    background: #808080;
-}
-
-.toolbar {
-    margin: 0px 0px 0px 0px;
-    padding: 0px 0px 0px 0px;
-    height: 30px;
-    background: #003366;
-    position: relative;
-    clear: bottom;
-    color: #eeeeee;
-    font-size: .8em;
-
-    .header-text {
-        margin: 0px 0px 0px 0px;
-        padding: 10px 0px 0px 0px;
-    }
-
-    ul.tabs-list {
-        margin:  0px 0px 0px 0px;
-        padding:  0px 0px 0px 0px;
-        list-style: none;
-
-        li {
-            margin:  0px 0px 0px 0px;
-            padding:  0px 5px 2px 5px;
-            position: relative;
-            float: left;
-            background:  #cccccc;
-            color: #434343;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            font-size: .8em;
-            border-top:  1px solid #fff;
-            border-left:  1px solid #fff;
-            border-right:  1px solid #fff;
-
-            .text {
-                margin: 0px 0px 0px 0px;
-                padding:  5px 0px 0px 0px;
-                position: relative;
-                float: left;
-            }
-
-            .close {
-                margin:  3px 0px 0px 5px;
-                padding:  0px 0px 0px 0px;
-                background: #6d8eaf;
-                border: 1px solid #fff;
-                position: relative;
-                float: left;
-                text-align: center;
-                width: 15px;
-                height: 15px;
-                line-height: 1em;
-                color: #fff;
-            }
-        }
-    }
-}
-
-.chat {
-    margin:  0px 0px 0px 0px;
-    padding:  0px 0px 0px 0px;
-    min-width: 960px;
-    display: none;
-    height: 100%;
-
-    .chat-container {
-        margin:  0px 0px 0px 0px;
-        padding:  0px 0px 0px 0px;
-        overflow: hidden;
-
-        .contacts {
-            margin:  0px 0px 0px 0px;
-            padding:  0px 0px 0px 0px;
-            width: 229px;
-            float: right;
-            background: #fff;
-            border-left: 1px solid #003366;
-            border-bottom: 1px solid #003366;
-
-            .list-container {
-
-                
-                .list-header {
-                    margin: 0px 0px 0px 0px;
-                    padding: 5px 5px 5px 5px;
-                    background: #cccccc;
-                    font-size: .9em;
-                    color: #434343;
-
-                }
-                ul.contacts-list {
-                    margin:  0px 0px 0px 0px;
-                    padding:  0px 0px 0px 0px;
-                    list-style: none;
-                    overflow-y: scroll;
-
-
-                    li {
-                        margin:  0px 0px 5px 0px;
-                        padding:  5px 5px 5px 5px;
-                        list-style: none;
-                        font-size: .7em;
-
-                    }
-                }
-
-            }
-
-            .list-container:not(:last-of-type) ul.contacts-list{
-                border-bottom: 1px solid #cccccc;
-            }
-        }
-
-        .current-content {
-            margin:  0px 0px 0px 0px;
-            padding:  0px 0px 0px 0px;
-            overflow: hidden;
-            background:  #eeeeee;
-            border-bottom: 1px solid #003366;
-            border-right: 1px solid #003366;
-
-            .chat-box {
-                margin:  0px 0px 0px 0px;
-                padding:  0px 0px 0px 0px;
-                background: #fff;
-                overflow: hidden;
-                
-                .chat-text {
-                    margin:  0px 0px 0px 0px;
-                    padding:  5px 5px 5px 5px;
-                    //border:  1px solid #cccccc;
-                    overflow-y: scroll;
-                    
-                    .chat-line {
-                        margin:  0px 0px 0px 0px;
-                        padding:  2px 2px 2px 2px;
-                        position: relative;
-                        font-size: .8em;
-                        
-                        .chat-meta {
-                            margin:  2px 0px 2px 0px;
-                            padding:  0px 0px 0px 0px;
-                            color: #cccccc;
-                            font-style: italic;
-                            font-size: .7em;
-                        }
-                    }
-                }
-            }
-
-            .chat-input {
-                margin:  0px 0px 0px 0px;
-                padding:  10px 10px 10px 10px;
-                background: #eeeeee;
-                overflow: hidden;
-                
-                .chat-submit {
-                    margin:  0px 0px 0px 0px;
-                    padding:  0px 0px 0px 0px;
-                    width: 65px;
-                    float: right;
-
-                    input[type="submit"] {
-                        margin: 0px 0px 0px 0px;
-                        padding: 5px 14px 6px;
-                        background-color: #0064CD;
-                        background-repeat: repeat-x;
-                        background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
-                        background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
-                        background-image: linear-gradient(top, #049cdb, #0064cd);
-                        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-                        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-                        border: 1px solid #CCC;
-                        border-radius: 4px;
-                        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-                        color: #fff;
-                    }
-                }
-
-                .text-box {
-                    margin:  0px 75px 0px 0px;
-                    padding:  0px 0px 0px 0px;
-                    background: red;
-
-                    input.chat-message {
-                        margin:  0px 0px 0px 0px;
-                        padding:  5px 0px 5px 0px;
-                        width: 100%;
-                        border:  1px solid #b3b2b2;
-                        background: #fff;
-
-                    }
-                }
-            }
-        }
-    }
-
-}:@children[o:Sass::Tree::CommentNode;[ :@value"/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */:
-@linei:@options{ :@silent0:@lines[ :
-@loud0o:Sass::Tree::ImportNode
-;0;[ ;
-i;@:@imported_filename"compass/reseto:Sass::Tree::RuleNode;[	o:Sass::Tree::PropNode;[ ;	o:Sass::Script::String;	"0px 0px 0px 0px:
-@type:identifier;@;
-i:
-@name["margin:@prop_syntax:new;@:
-@tabsi o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i;["padding;;;@;i o;;[ ;	o;;	"!Helvetica, Arial, sans-serif;;;@;
-i;["font-family;;;@;i o;;[ ;	o;;	"#eeeeee;;;@;
-i;["background;;;@;i :
-@rule["	body;
-i:@parsed_ruleso:"Sass::Selector::CommaSequence;
-i:@members[o:Sass::Selector::Sequence;[o:#Sass::Selector::SimpleSequence;
-i;[o:Sass::Selector::Element	;
-i;["	body:@namespace0:@filename" ;"@5;"@5;@:@has_childrenT;i o;;[o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i;["padding;;;@;i o;;[ ;	o;;	"	25px;;;@;
-i;["height;;;@;i o;;[ ;	o;;	"1px solid #cccccc;;;@;
-i;["border;;;@;i o;;[ ;	o;;	"	#fff;;;@;
-i;["background;;;@;i o;;[ ;	o;;	"
-250px;;;@;
-i;["min-width;;;@;i ;["/input[type="text"], input[type="password"];
-i;o;;
-i;[o;;[o;;
-i;[o; 	;
-i;["
-input;!0;"" o:Sass::Selector::Attribute;	[""text";
-i;["	type;!0:@operator"=;"@g;"@go;;[o;;
-i;[o; 	;
-i;["
-input;!0;"@go;$;	[""password";
-i;["	type;!0;%"=;"@g;"@g;"@g;@;#T;i o;;[	o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i;["margin;;;@;i o;;[ ;	o;;	"5px 5px 5px 5px;;;@;
-i ;["padding;;;@;i o;;[ ;	o;;	"5px;;;@;
-i!;["border-radius;;;@;i o;;[ ;	o;;	"	none;;;@;
-i";["border;;;@;i ;["input[type="submit"];
-i;o;;
-i;[o;;[o;;
-i;[o; 	;
-i;["
-input;!0;"" o;$;	[""submit";
-i;["	type;!0;%"=;"@õ;"@õ;"@õ;@;#T;i o;;[o;;[ ;	o;;	"#7fd67f;;;@;
-i&;["background;;;@;i o;;[ ;	o;;	"	#fff;;;@;
-i';["
-color;;;@;i ;["input[type="submit"].green;
-i%;o;;
-i%;[o;;[o;;
-i%;[o; 	;
-i%;["
-input;!0;"" o;$;	[""submit";
-i%;["	type;!0;%"=;"@ªo:Sass::Selector::Class;
-i%;["
-green;"@ª;"@ª;"@ª;@;#T;i o;;[o;;[ ;	o;;	"#509450;;;@;
-i+;["background;;;@;i o;;[ ;	o;;	"	#fff;;;@;
-i,;["
-color;;;@;i o;;[ ;	o;;	"pointer;;;@;
-i-;["cursor;;;@;i ;["%input[type="submit"].green:hover;
-i*;o;;
-i*;[o;;[o;;
-i*;[	o; 	;
-i*;["
-input;!0;"" o;$;	[""submit";
-i*;["	type;!0;%"=;"@‰o;&;
-i*;["
-green;"@‰o:Sass::Selector::Pseudo
-;
-i*;["
-hover;:
-class:	@arg0;"@‰;"@‰;"@‰;@;#T;i o;;[
-o;;[ ;	o;;	"0px 0px 10px 0px;;;@;
-i1;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i2;["padding;;;@;i o;;[ ;	o;;	"hidden;;;@;
-i3;["overflow;;;@;i o;;[
-o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i7;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i8;["padding;;;@;i o;;[ ;	o;;	"
-120px;;;@;
-i9;["
-width;;;@;i o;;[ ;	o;;	"relative;;;@;
-i:;["position;;;@;i o;;[ ;	o;;	"	left;;;@;
-i;;["
-float;;;@;i ;[".field-label;
-i6;o;;
-i6;[o;;[o;;
-i6;[o;&;
-i6;["field-label;"" ;"@0;"@0;@;#T;i o;;[	o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i?;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i@;["padding;;;@;i o;;[ ;	o;;	"relative;;;@;
-iA;["position;;;@;i o;;[ ;	o;;	"	left;;;@;
-iB;["
-float;;;@;i ;[".field-value;
-i>;o;;
-i>;[o;;[o;;
-i>;[o;&;
-i>;["field-value;"" ;"@V;"@V;@;#T;i ;[".div-row;
-i0;o;;
-i0;[o;;[o;;
-i0;[o;&;
-i0;["div-row;"" ;"@b;"@b;@;#T;i o;;[o;;[ ;	o;;	"30px auto 0px auto;;;@;
-iG;["margin;;;@;i o;;[ ;	o;;	"10px 10px 10px 10px;;;@;
-iH;["padding;;;@;i o;;[ ;	o;;	"	#fff;;;@;
-iI;["background;;;@;i o;;[ ;	o;;	"
-380px;;;@;
-iJ;["
-width;;;@;i o;;[ ;	o;;	"	10px;;;@;
-iK;["border-radius;;;@;i o;;[ ;	o;;	"hidden;;;@;
-iL;["overflow;;;@;i o;;[ ;	"/*display: none;*/;
-iM;@;0;[ ;0;[".login;
-iF;o;;
-iF;[o;;[o;;
-iF;[o;&;
-iF;["
-login;"" ;"@ò;"@ò;@;#T;i o;;[o;;[ ;	o;;	"2px 5px 0px 0px;;;@;
-iQ;["margin;;;@;i o;;[ ;	o;;	"	10px;;;@;
-iR;["height;;;@;i o;;[ ;	o;;	"5px;;;@;
-iS;["border-radius;;;@;i o;;[ ;	o;;	"	10px;;;@;
-iT;["
-width;;;@;i o;;[ ;	o;;	"relative;;;@;
-iU;["position;;;@;i o;;[ ;	o;;	"	left;;;@;
-iV;["
-float;;;@;i ;[".status-bubble;
-iP;o;;
-iP;[o;;[o;;
-iP;[o;&;
-iP;["status-bubble;"" ;"@ ;"@ ;@;#T;i o;;[o;;[ ;	o;;	"#008000;;;@;
-iZ;["background;;;@;i ;[".green-bubble;
-iY;o;;
-iY;[o;;[o;;
-iY;[o;&;
-iY;["green-bubble;"" ;"@ﬁ;"@ﬁ;@;#T;i o;;[o;;[ ;	o;;	"#ff0000;;;@;
-i^;["background;;;@;i ;[".red-bubble;
-i];o;;
-i];[o;;[o;;
-i];[o;&;
-i];["red-bubble;"" ;"@Ú;"@Ú;@;#T;i o;;[o;;[ ;	o;;	"#ffff00;;;@;
-ib;["background;;;@;i ;[".yellow-bubble;
-ia;o;;
-ia;[o;;[o;;
-ia;[o;&;
-ia;["yellow-bubble;"" ;"@;"@;@;#T;i o;;[o;;[ ;	o;;	"#808080;;;@;
-if;["background;;;@;i ;[".gray-bubble;
-ie;o;;
-ie;[o;;[o;;
-ie;[o;&;
-ie;["gray-bubble;"" ;"@;"@;@;#T;i o;;[o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-ij;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-ik;["padding;;;@;i o;;[ ;	o;;	"	30px;;;@;
-il;["height;;;@;i o;;[ ;	o;;	"#003366;;;@;
-im;["background;;;@;i o;;[ ;	o;;	"relative;;;@;
-in;["position;;;@;i o;;[ ;	o;;	"bottom;;;@;
-io;["
-clear;;;@;i o;;[ ;	o;;	"#eeeeee;;;@;
-ip;["
-color;;;@;i o;;[ ;	o;;	"	.8em;;;@;
-iq;["font-size;;;@;i o;;[o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-it;["margin;;;@;i o;;[ ;	o;;	"10px 0px 0px 0px;;;@;
-iu;["padding;;;@;i ;[".header-text;
-is;o;;
-is;[o;;[o;;
-is;[o;&;
-is;["header-text;"" ;"@f;"@f;@;#T;i o;;[	o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-iy;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-iz;["padding;;;@;i o;;[ ;	o;;	"	none;;;@;
-i{;["list-style;;;@;i o;;[o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i~;["margin;;;@;i o;;[ ;	o;;	"0px 5px 2px 5px;;;@;
-i;["padding;;;@;i o;;[ ;	o;;	"relative;;;@;
-i{;["position;;;@;i o;;[ ;	o;;	"	left;;;@;
-i|;["
-float;;;@;i o;;[ ;	o;;	"#cccccc;;;@;
-i};["background;;;@;i o;;[ ;	o;;	"#434343;;;@;
-i~;["
-color;;;@;i o;;[ ;	o;;	"5px;;;@;
-i;["border-top-left-radius;;;@;i o;;[ ;	o;;	"5px;;;@;
-iÄ;["border-top-right-radius;;;@;i o;;[ ;	o;;	"	.8em;;;@;
-iÅ;["font-size;;;@;i o;;[ ;	o;;	"1px solid #fff;;;@;
-iÇ;["border-top;;;@;i o;;[ ;	o;;	"1px solid #fff;;;@;
-iÉ;["border-left;;;@;i o;;[ ;	o;;	"1px solid #fff;;;@;
-iÑ;["border-right;;;@;i o;;[	o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-iá;["margin;;;@;i o;;[ ;	o;;	"5px 0px 0px 0px;;;@;
-ià;["padding;;;@;i o;;[ ;	o;;	"relative;;;@;
-iâ;["position;;;@;i o;;[ ;	o;;	"	left;;;@;
-iä;["
-float;;;@;i ;["
-.text;
-iÜ;o;;
-iÜ;[o;;[o;;
-iÜ;[o;&;
-iÜ;["	text;"" ;"@Í;"@Í;@;#T;i o;;[o;;[ ;	o;;	"3px 0px 0px 5px;;;@;
-ié;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-iè;["padding;;;@;i o;;[ ;	o;;	"#6d8eaf;;;@;
-iê;["background;;;@;i o;;[ ;	o;;	"1px solid #fff;;;@;
-ië;["border;;;@;i o;;[ ;	o;;	"relative;;;@;
-ií;["position;;;@;i o;;[ ;	o;;	"	left;;;@;
-iì;["
-float;;;@;i o;;[ ;	o;;	"center;;;@;
-iî;["text-align;;;@;i o;;[ ;	o;;	"	15px;;;@;
-iï;["
-width;;;@;i o;;[ ;	o;;	"	15px;;;@;
-iñ;["height;;;@;i o;;[ ;	o;;	"1em;;;@;
-ió;["line-height;;;@;i o;;[ ;	o;;	"	#fff;;;@;
-iò;["
-color;;;@;i ;[".close;
-iç;o;;
-iç;[o;;[o;;
-iç;[o;&;
-iç;["
-close;"" ;"@:;"@:;@;#T;i ;["li;
-i};o;;
-i};[o;;[o;;
-i};[o; 	;
-i};["li;!0;"" ;"@F;"@F;@;#T;i ;["ul.tabs-list;
-ix;o;;
-ix;[o;;[o;;
-ix;[o; 	;
-ix;["ul;!0;"" o;&;
-ix;["tabs-list;"@R;"@R;"@R;@;#T;i ;[".toolbar;
-ii;o;;
-ii;[o;;[o;;
-ii;[o;&;
-ii;["toolbar;"" ;"@a;"@a;@;#T;i o;;[o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-iü;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i†;["padding;;;@;i o;;[ ;	o;;	"
-960px;;;@;
-i°;["min-width;;;@;i o;;[ ;	o;;	"	none;;;@;
-i¢;["display;;;@;i o;;[ ;	o;;	"	100%;;;@;
-i£;["height;;;@;i o;;[
-o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i¶;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-iß;["padding;;;@;i o;;[ ;	o;;	"hidden;;;@;
-i®;["overflow;;;@;i o;;[o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i´;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i¨;["padding;;;@;i o;;[ ;	o;;	"
-229px;;;@;
-i≠;["
-width;;;@;i o;;[ ;	o;;	"
-right;;;@;
-iÆ;["
-float;;;@;i o;;[ ;	o;;	"	#fff;;;@;
-iØ;["background;;;@;i o;;[ ;	o;;	"1px solid #003366;;;@;
-i∞;["border-left;;;@;i o;;[ ;	o;;	"1px solid #003366;;;@;
-i±;["border-bottom;;;@;i o;;[o;;[
-o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i∑;["margin;;;@;i o;;[ ;	o;;	"5px 5px 5px 5px;;;@;
-i∏;["padding;;;@;i o;;[ ;	o;;	"#cccccc;;;@;
-iπ;["background;;;@;i o;;[ ;	o;;	"	.9em;;;@;
-i∫;["font-size;;;@;i o;;[ ;	o;;	"#434343;;;@;
-iª;["
-color;;;@;i ;[".list-header;
-i∂;o;;
-i∂;[o;;[o;;
-i∂;[o;&;
-i∂;["list-header;"" ;"@Ô;"@Ô;@;#T;i o;;[
-o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-iø;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i¿;["padding;;;@;i o;;[ ;	o;;	"	none;;;@;
-i¡;["list-style;;;@;i o;;[ ;	o;;	"scroll;;;@;
-i¬;["overflow-y;;;@;i o;;[	o;;[ ;	o;;	"0px 0px 5px 0px;;;@;
-i∆;["margin;;;@;i o;;[ ;	o;;	"5px 5px 5px 5px;;;@;
-i«;["padding;;;@;i o;;[ ;	o;;	"	none;;;@;
-i»;["list-style;;;@;i o;;[ ;	o;;	"	.7em;;;@;
-i…;["font-size;;;@;i ;["li;
-i≈;o;;
-i≈;[o;;[o;;
-i≈;[o; 	;
-i≈;["li;!0;"" ;"@/;"@/;@;#T;i ;["ul.contacts-list;
-iæ;o;;
-iæ;[o;;[o;;
-iæ;[o; 	;
-iæ;["ul;!0;"" o;&;
-iæ;["contacts-list;"@;;"@;;"@;;@;#T;i ;[".list-container;
-i≥;o;;
-i≥;[o;;[o;;
-i≥;[o;&;
-i≥;["list-container;"" ;"@J;"@J;@;#T;i o;;[o;;[ ;	o;;	"1px solid #cccccc;;;@;
-i—;["border-bottom;;;@;i ;["8.list-container:not(:last-of-type) ul.contacts-list;
-i–;o;;
-i–;[o;;[o;;
-i–;[o;&;
-i–;["list-container;"" o:(Sass::Selector::SelectorPseudoClass	;
-i–;"not:@selectoro;;[o;;[o;;[o;';["last-of-type;;(;)0;"@^;"@^o;;
-i–;[o; 	;
-i–;["ul;!0;"@^o;&;
-i–;["contacts-list;"@^;"@^;"@^;@;#T;i ;[".contacts;
-i™;o;;
-i™;[o;;[o;;
-i™;[o;&;
-i™;["contacts;"" ;"@};"@};@;#T;i o;;[o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i÷;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i◊;["padding;;;@;i o;;[ ;	o;;	"hidden;;;@;
-iÿ;["overflow;;;@;i o;;[ ;	o;;	"#eeeeee;;;@;
-iŸ;["background;;;@;i o;;[ ;	o;;	"1px solid #003366;;;@;
-i⁄;["border-bottom;;;@;i o;;[ ;	o;;	"1px solid #003366;;;@;
-i€;["border-right;;;@;i o;;[
-o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-iﬁ;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-iﬂ;["padding;;;@;i o;;[ ;	o;;	"	#fff;;;@;
-i‡;["background;;;@;i o;;[ ;	o;;	"hidden;;;@;
-i·;["overflow;;;@;i o;;[
-o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i‰;["margin;;;@;i o;;[ ;	o;;	"5px 5px 5px 5px;;;@;
-iÂ;["padding;;;@;i o;;[ ;	"%/*border:  1px solid #cccccc; */;
-iÊ;@;i ;[ ;0o;;[ ;	o;;	"scroll;;;@;
-iÁ;["overflow-y;;;@;i o;;[
-o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-iÍ;["margin;;;@;i o;;[ ;	o;;	"2px 2px 2px 2px;;;@;
-iÎ;["padding;;;@;i o;;[ ;	o;;	"relative;;;@;
-iÏ;["position;;;@;i o;;[ ;	o;;	"	.8em;;;@;
-iÌ;["font-size;;;@;i o;;[
-o;;[ ;	o;;	"2px 0px 2px 0px;;;@;
-i;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-iÒ;["padding;;;@;i o;;[ ;	o;;	"#cccccc;;;@;
-iÚ;["
-color;;;@;i o;;[ ;	o;;	"italic;;;@;
-iÛ;["font-style;;;@;i o;;[ ;	o;;	"	.7em;;;@;
-iÙ;["font-size;;;@;i ;[".chat-meta;
-iÔ;o;;
-iÔ;[o;;[o;;
-iÔ;[o;&;
-iÔ;["chat-meta;"" ;"@;"@;@;#T;i ;[".chat-line;
-iÈ;o;;
-iÈ;[o;;[o;;
-iÈ;[o;&;
-iÈ;["chat-line;"" ;"@';"@';@;#T;i ;[".chat-text;
-i„;o;;
-i„;[o;;[o;;
-i„;[o;&;
-i„;["chat-text;"" ;"@3;"@3;@;#T;i ;[".chat-box;
-i›;o;;
-i›;[o;;[o;;
-i›;[o;&;
-i›;["chat-box;"" ;"@?;"@?;@;#T;i o;;[o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i˚;["margin;;;@;i o;;[ ;	o;;	"10px 10px 10px 10px;;;@;
-i¸;["padding;;;@;i o;;[ ;	o;;	"#eeeeee;;;@;
-i˝;["background;;;@;i o;;[ ;	o;;	"hidden;;;@;
-i˛;["overflow;;;@;i o;;[
-o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i;["padding;;;@;i o;;[ ;	o;;	"	65px;;;@;
-i;["
-width;;;@;i o;;[ ;	o;;	"
-right;;;@;
-i;["
-float;;;@;i o;;[o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i;["margin;;;@;i o;;[ ;	o;;	"5px 14px 6px;;;@;
-i;["padding;;;@;i o;;[ ;	o;;	"#0064CD;;;@;
-i	;["background-color;;;@;i o;;[ ;	o;;	"repeat-x;;;@;
-i
-;["background-repeat;;;@;i o;;[ ;	o:Sass::Script::Funcall
-;
-i;"-moz-linear-gradient;@:@keywords{ :
-@args[o;	;	"top;
-i;;;@o:Sass::Script::Color	;	0;
-i;@:@attrs{	:redi	:
-alphai:
-greeniú:	bluei€o;/	;	0;
-i;@;0{	;1i ;2i;3ii;4iÕ;
-i;["background-image;;;@;i o;;[ ;	o;,
-;
-i;"-webkit-linear-gradient;@;-{ ;.[o;	;	"top;
-i;;;@o;/	;	0;
-i;@;0{	;1i	;2i;3iú;4i€o;/	;	0;
-i;@;0{	;1i ;2i;3ii;4iÕ;
-i;["background-image;;;@;i o;;[ ;	o;,
-;
-i;"linear-gradient;@;-{ ;.[o;	;	"top;
-i;;;@o;/	;	0;
-i;@;0{	;1i	;2i;3iú;4i€o;/	;	0;
-i;@;0{	;1i ;2i;3ii;4iÕ;
-i;["background-image;;;@;i o;;[ ;	o:Sass::Script::List	;	[	o:Sass::Script::Number:@original"0;	i ;
-i;@:@denominator_units[ :@numerator_units[ o;6;7"	-1px;	i˙;
-i;@;8[ ;9["pxo;6;7"0;	i ;
-i;@;8@æ;9[ o;,
-;
-i;"	rgba;@;-{ ;.[	o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"	0.25;	f	0.25;
-i;@;8@æ;9[ ;
-i;@:@separator:
-space;
-i;["text-shadow;;;@;i o;;[ ;	o;5	;	[o;,
-;
-i;"	rgba;@;-{ ;.[	o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0.1;	f0.10000000000000001 ôö;
-i;@;8@æ;9[ o;,
-;
-i;"	rgba;@;-{ ;.[	o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0.1;	f0.10000000000000001 ôö;
-i;@;8@æ;9[ o;,
-;
-i;"	rgba;@;-{ ;.[	o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"	0.25;	f	0.25;
-i;@;8@æ;9[ ;
-i;@;:;;;
-i;["border-color;;;@;i o;;[ ;	o;;	"1px solid #CCC;;;@;
-i;["border;;;@;i o;;[ ;	o;;	"4px;;;@;
-i;["border-radius;;;@;i o;;[ ;	o;5	;	[o;5	;	[
-o;	;	"
-inset;
-i;;;@o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"1px;	i;
-i;@;8[ ;9["pxo;6;7"0;	i ;
-i;@;8@æ;9[ o;,
-;
-i;"	rgba;@;-{ ;.[	o;6;7"255;	iˇ;
-i;@;8@æ;9[ o;6;7"255;	iˇ;
-i;@;8@æ;9[ o;6;7"255;	iˇ;
-i;@;8@æ;9[ o;6;7"0.2;	f0.20000000000000001 ôö;
-i;@;8@æ;9[ ;
-i;@;:;;o;5	;	[	o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"1px;	i;
-i;@;8[ ;9["pxo;6;7"2px;	i;
-i;@;8[ ;9["pxo;,
-;
-i;"	rgba;@;-{ ;.[	o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"0;	i ;
-i;@;8@æ;9[ o;6;7"	0.05;	f0.050000000000000003 ôö;
-i;@;8@æ;9[ ;
-i;@;:;;;
-i;@;::
-comma;
-i;["box-shadow;;;@;i o;;[ ;	o;;	"	#fff;;;@;
-i;["
-color;;;@;i ;["input[type="submit"];
-i;o;;
-i;[o;;[o;;
-i;[o; 	;
-i;["
-input;!0;"" o;$;	[""submit";
-i;["	type;!0;%"=;"@w;"@w;"@w;@;#T;i ;[".chat-submit;
-i ;o;;
-i ;[o;;[o;;
-i ;[o;&;
-i ;["chat-submit;"" ;"@â;"@â;@;#T;i o;;[	o;;[ ;	o;;	"0px 75px 0px 0px;;;@;
-i;["margin;;;@;i o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i;["padding;;;@;i o;;[ ;	o;;	"red;;;@;
-i;["background;;;@;i o;;[
-o;;[ ;	o;;	"0px 0px 0px 0px;;;@;
-i;["margin;;;@;i o;;[ ;	o;;	"5px 0px 5px 0px;;;@;
-i;["padding;;;@;i o;;[ ;	o;;	"	100%;;;@;
-i;["
-width;;;@;i o;;[ ;	o;;	"1px solid #b3b2b2;;;@;
-i ;["border;;;@;i o;;[ ;	o;;	"	#fff;;;@;
-i!;["background;;;@;i ;["input.chat-message;
-i;o;;
-i;[o;;[o;;
-i;[o; 	;
-i;["
-input;!0;"" o;&;
-i;["chat-message;"@…;"@…;"@…;@;#T;i ;[".text-box;
-i;o;;
-i;[o;;[o;;
-i;[o;&;
-i;["text-box;"" ;"@ÿ;"@ÿ;@;#T;i ;[".chat-input;
-i˙;o;;
-i˙;[o;;[o;;
-i˙;[o;&;
-i˙;["chat-input;"" ;"@‰;"@‰;@;#T;i ;[".current-content;
-i’;o;;
-i’;[o;;[o;;
-i’;[o;&;
-i’;["current-content;"" ;"@;"@;@;#T;i ;[".chat-container;
-i•;o;;
-i•;[o;;[o;;
-i•;[o;&;
-i•;["chat-container;"" ;"@¸;"@¸;@;#T;i ;["
-.chat;
-iû;o;;
-iû;[o;;[o;;
-iû;[o;&;
-iû;["	chat;"" ;"@;"@;@;#T;i ;
-i;@;#T
