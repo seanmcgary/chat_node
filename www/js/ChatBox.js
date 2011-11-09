@@ -60,9 +60,6 @@ ChatBox.prototype = {
             self.chat_input = self.chat.find('.chat-input');
 
             var content_height = window.innerHeight - self.chat_session._current_content_toolbar.get(0).offsetHeight;
-            //console.log(window.innerHeight);
-            //console.log(self.chat_session._chat_toolbar.get(0).offsetHeight);
-            //console.log(content_height);
 
             var input_height = self.chat_input.get(0).offsetHeight + 30;
 
