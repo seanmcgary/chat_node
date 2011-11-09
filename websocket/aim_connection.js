@@ -5,7 +5,7 @@
  * Time: 8:48 PM
  * To change this template use File | Settings | File Templates.
  */
-function Aim_Connection(){
+function Aim_Connection(chat_instance){
     var self = this;
 
     // set up some instance variables;
@@ -15,15 +15,16 @@ function Aim_Connection(){
     self.connected = false;
     self.username = null;
     self.contact_list = [];
-    self.chat_instance = null;
+    self.chat_instance = chat_instance;
     self.protocol = 'aim';
 };
 
 Aim_Connection.prototype = {
-    init: function(chat_instance){
+    /*init: function(chat_instance){
         var self = this;
 
         self.chat_instance = chat_instance;
+        console.log(self.chat_instance);
     },
     reinit: function(callback){
         var self = this;
@@ -31,7 +32,7 @@ Aim_Connection.prototype = {
         self.post_connection_setup(function(){
             callback(false, {contacts: self.contact_list, username: self.username});
         });
-    },
+    },*/
     auth: function(username, password, callback){
         var self = this;
 
@@ -123,11 +124,15 @@ Aim_Connection.prototype = {
         callback();
     },
     send_msg: function(msg_data){
+        var self = this;
         console.log('sending');
         console.log(msg_data);
+
+        self.aim_connection.sendIM(msg_data.to_user, msg_data.msg);
     },
     msg_received: function(text, sender, flags, when){
         var self = this;
+        
         var data = {
             text: text,
             username: sender.name,
@@ -135,7 +140,8 @@ Aim_Connection.prototype = {
         };
 
         console.log(data);
-        console.log(self.chat_instance);
+
+        //console.log(self.chat_instance);
         self.chat_instance.handle_received_msg(data);
     },
     contact_offline: function(user){
@@ -153,12 +159,21 @@ Aim_Connection.prototype = {
     setup_aim_listeners: function(callback){
         var self = this;
 
-        self.aim_connection.removeListener('im', self.msg_received);
+        console.log('setting up listeners');
+
+
+        self.aim_connection.removeListener('im', function(){
+            self.msg_received(text, sender, flags, when);
+        });
+        
         self.aim_connection.removeListener('contactonline', self.contact_online);
         self.aim_connection.removeListener('contactoffline', self.contact_offline);
         self.aim_connection.removeListener('contactupdate', self.contact_update);
 
-        self.aim_connection.on('im', self.msg_received);
+        self.aim_connection.on('im', function(text, sender, flags, when){
+            self.msg_received(text, sender, flags, when);
+        });
+
         self.aim_connection.on('contactonline', self.contact_online);
         self.aim_connection.on('contactoffline', self.contact_offline);
         self.aim_connection.on('contactupdate', self.contact_update);
