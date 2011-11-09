@@ -37,7 +37,7 @@ ContactList.prototype = {
         self._list_container.append(self._contact_list);
 
 
-        self.chat_session._contacts_container.append(self._list_container);
+        self.chat_session._contacts.append(self._list_container);
 
 
     },

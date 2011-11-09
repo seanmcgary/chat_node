@@ -71,6 +71,7 @@ Contact.prototype = {
                 var username = $(this).attr('username');
                 var protocol = $(this).attr('protocol');
                 var chat_id = username + ":" + protocol;
+                console.log(self.contact_list.chat_session);
                 if(!(chat_id in self.contact_list.chat_session.current_chats_list)){
                     var chatbox = new ChatBox(self.contact_list.chat_session, self, chat_id);
 

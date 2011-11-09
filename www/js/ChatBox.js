@@ -42,7 +42,7 @@ ChatBox.prototype = {
 
         self.chat = $(Mustache.to_html(chat_box_template, {chat_id: self.chat_id, username: self.contact.username}));
 
-        self.chat_session.current_chats.append(self.chat);
+        self.chat_session._current_content.append(self.chat);
 
         self.draw_tab();
 
@@ -59,7 +59,7 @@ ChatBox.prototype = {
             self.chat_text = self.chat.find('.chat-text');
             self.chat_input = self.chat.find('.chat-input');
 
-            var content_height = window.innerHeight - self.chat_session._chat_toolbar.get(0).offsetHeight;
+            var content_height = window.innerHeight - self.chat_session._current_content_toolbar.get(0).offsetHeight;
             //console.log(window.innerHeight);
             //console.log(self.chat_session._chat_toolbar.get(0).offsetHeight);
             //console.log(content_height);

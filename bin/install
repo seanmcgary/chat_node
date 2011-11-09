@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# https://github.com/visionmedia/express
+npm install --global express
+
+# https://github.com/LearnBoost/socket.io
+npm install --global socket.io
+
+# https://github.com/LearnBoost/socket.io-client
+npm install --global socket.io-client

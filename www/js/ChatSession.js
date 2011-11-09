@@ -13,7 +13,9 @@ function ChatSession(chat_container_elem, socket){
 
     self.socket = socket;
 
-    self.current_chats = {};
+    self.current_chat = null;
+
+    self.current_chats_list = {};
 
     self.setup_listeners();
 }
@@ -25,10 +27,34 @@ ChatSession.prototype = {
 
         $('#login').css('display', 'none');
 
+        self._chat_container = $('<div class="chat-container"></div>');
+        // direct children of chat_container
+        self._contacts = $('<div class="contacts"></div>');
+        self._current_content = $('<div class="current-content"></div>');
+
+        self._current_content_toolbar = $('<div class="toolbar"></div>');
+
+        self._current_content.append(self._current_content_toolbar);
+
+        self._chat_container.append(self._contacts);
+        self._chat_container.append(self._current_content);
+
+        self.container_elem.css('display', 'block');
+        self.container_elem.append(self._chat_container);
+
+        self.resize();
+
+        self.contact_list = new ContactList(self);
+
+        self.contact_list.render_contacts(chat_data.contacts);
+
+        
+
+
         //self.chat_tabs = $('<div class="chat-tabs" id="chat-tabs"></div>');
         //self.chat_tabs_list = $('<ul id="tabs-list"></ul>');
-        
-        self.chat_container = $('<div class="chat-container"></div>');
+
+        /*self.chat_container = $('<div class="chat-container"></div>');
 
         //self.container_elem.append(self.chat_tabs);
         //self.chat_tabs.append(self.chat_tabs_list);
@@ -54,7 +80,7 @@ ChatSession.prototype = {
 
         self.resize();
 
-        //self.contact_list.render_contacts(chat_data.contacts);
+        //self.contact_list.render_contacts(chat_data.contacts);*/
     },
     authenticate_user: function(login){
         var self = this;
@@ -66,7 +92,7 @@ ChatSession.prototype = {
     resize: function(){
         var self = this;
 
-        self.current_chats.css('height', window.innerHeight + 'px');
+        self._current_content.css('height', window.innerHeight + 'px');
 
     },
     setup_listeners: function(){
